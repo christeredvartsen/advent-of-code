@@ -1,0 +1,52 @@
+{
+  "name": "christeredvartsen/advent-of-code",
+  "type": "library",
+  "description": "Advent of Code solutions",
+  "homepage": "https://github.com/christeredvartsen/advent-of-code",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christer Edvartsen",
+      "email": "cogo@starzinger.net",
+      "homepage": "https://github.com/christeredvartsen"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "symfony/console": "^5.4"
+  },
+  "require-dev": {
+    "imbo/imbo-coding-standard": "^2.0",
+    "phpunit/phpunit": "^9.3",
+    "symfony/var-dumper": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "AoC\\": [
+        "src",
+        "2021/src"
+      ]
+    },
+    "files": [
+      "src/functions.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AoC\\": "2021/tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit --verbose",
+    "test:coverage": "vendor/bin/phpunit --verbose --coverage-html build/coverage",
+    "cs": "php-cs-fixer fix --dry-run --diff",
+    "ci": [
+      "@test",
+      "@cs"
+    ]
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "bin": ["aoc"]
+}
