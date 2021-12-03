@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace AoC\Command;
 
+use AoC\Solver;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -43,6 +44,12 @@ class Solve extends Command
 
         $data = file_get_contents(__DIR__ . '/../../2021/input/' . $day . '.txt');
         $solver = new $solverName($data);
+
+        if (!$solver instanceof Solver) {
+            $output->writeln('<error>Solver does not currently implement Aoc\\Solver</error>');
+            return Command::FAILURE;
+        }
+
         $output->write([
             'Part 1: <info>' . $solver->solvePart1() . '</info>',
             'Part 2: <info>' . $solver->solvePart2() . '</info>',
