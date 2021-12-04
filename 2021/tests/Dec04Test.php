@@ -47,4 +47,15 @@ class Dec04Test extends TestCase
             $this->solver->solvePart1(),
         );
     }
+
+    /**
+     * @covers ::solvePart2
+     */
+    public function testSolvePart2(): void
+    {
+        $this->assertSame(
+            1924,
+            $this->solver->solvePart2(),
+        );
+    }
 }

@@ -33,8 +33,10 @@ class Dec04 implements Solver
         $this->numBoards = count($this->boards);
     }
 
-    private function shoutNumber(int $number): int
+    private function shoutNumber(int $number, bool $returnFirstWinningBoard = true): array
     {
+        $winningBoards = [];
+
         for ($board = 0; $board < $this->numBoards; $board++) {
             for ($row = 0; $row < 5; $row++) {
                 for ($col = 0; $col < 5; $col++) {
@@ -44,12 +46,21 @@ class Dec04 implements Solver
                 }
             }
 
-            if ($score = $this->bingo($this->boards[$board])) {
-                return $number * $score;
+            if ($unmarkedSum = $this->bingo($this->boards[$board])) {
+                $winningBoard = [
+                    'score' => $number * $unmarkedSum,
+                    'index' => $board,
+                ];
+
+                if ($returnFirstWinningBoard) {
+                    return [$winningBoard];
+                }
+
+                $winningBoards[] = $winningBoard;
             }
         }
 
-        return 0;
+        return $winningBoards;
     }
 
     private function bingo(array $board): int
@@ -98,8 +109,10 @@ class Dec04 implements Solver
         $len = count($this->nums);
 
         for ($i = 0; $i < $len; $i++) {
-            if ($score = $this->shoutNumber($this->nums[$i])) {
-                return $score;
+            $winningBoards = $this->shoutNumber($this->nums[$i]);
+
+            if ([] !== $winningBoards) {
+                return $winningBoards[0]['score'];
             }
         }
 
@@ -108,6 +121,25 @@ class Dec04 implements Solver
 
     public function solvePart2(): int
     {
-        return 0;
+        $len = count($this->nums);
+
+        for ($i = 0; $i < $len; $i++) {
+            $winningBoards = $this->shoutNumber($this->nums[$i], false);
+
+            if ([] !== $winningBoards) {
+                foreach ($winningBoards as $winner) {
+                    unset($this->boards[$winner['index']]);
+                    $this->numBoards--;
+                }
+
+                $this->boards = array_values($this->boards);
+
+                if (0 === $this->numBoards) {
+                    return $winner['score'];
+                }
+            }
+        }
+
+        throw new RuntimeException('No winner :(');
     }
 }
