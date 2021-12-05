@@ -31,7 +31,8 @@ function stringToStrings(string $input): array
  * @param int $day
  * @param int $year
  */
-function getInputFile(int $day, int $year = 2021): string {
+function getInputFile(int $day, int $year = 2021): string
+{
     $input = __DIR__ . '/../' . $year . '/input/' . sprintf('%02d.txt', $day);
 
     if (!file_exists($input)) {
