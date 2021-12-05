@@ -8,21 +8,14 @@ use PHPUnit\Framework\TestCase;
  */
 class Dec02Test extends TestCase
 {
-    private Dec02 $solver;
-
-    protected function setUp(): void
-    {
-        $this->solver = new Dec02(
-            <<<INPUT
-                forward 5
-                down 5
-                forward 8
-                up 3
-                down 8
-                forward 2
-            INPUT
-        );
-    }
+    private string $testInput = <<<TESTINPUT
+        forward 5
+        down 5
+        forward 8
+        up 3
+        down 8
+        forward 2
+    TESTINPUT;
 
     /**
      * @covers ::solvePart1
@@ -31,7 +24,12 @@ class Dec02Test extends TestCase
     {
         $this->assertSame(
             150,
-            $this->solver->solvePart1(),
+            (new Dec02($this->testInput))->solvePart1(),
+        );
+
+        $this->assertSame(
+            1947824,
+            (new Dec02(getInputFile(2)))->solvePart1(),
         );
     }
 
@@ -42,7 +40,12 @@ class Dec02Test extends TestCase
     {
         $this->assertSame(
             900,
-            $this->solver->solvePart2(),
+            (new Dec02($this->testInput))->solvePart2(),
+        );
+
+        $this->assertSame(
+            1813062561,
+            (new Dec02(getInputFile(2)))->solvePart2(),
         );
     }
 }
