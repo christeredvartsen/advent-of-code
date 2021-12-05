@@ -42,18 +42,18 @@ class Solve extends Command
             return Command::FAILURE;
         }
 
-        $data = file_get_contents(__DIR__ . '/../../2021/input/' . $day . '.txt');
-        $solverForPart1 = new $solverName($data);
-        $solverForPart2 = clone $solverForPart1;
+        $solver = new $solverName();
 
-        if (!$solverForPart1 instanceof Solver) {
+        if (!$solver instanceof Solver) {
             $output->writeln('<error>Solver does not currently implement Aoc\\Solver</error>');
             return Command::FAILURE;
         }
 
+        $data = file_get_contents(__DIR__ . '/../../2021/input/' . $day . '.txt');
+
         $output->write([
-            'Part 1: <info>' . $solverForPart1->solvePart1() . '</info>',
-            'Part 2: <info>' . $solverForPart2->solvePart2() . '</info>',
+            'Part 1: <info>' . $solver->solvePart1($data) . '</info>',
+            'Part 2: <info>' . $solver->solvePart2($data) . '</info>',
         ], true);
 
         return Command::SUCCESS;

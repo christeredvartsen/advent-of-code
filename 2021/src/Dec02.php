@@ -7,27 +7,18 @@ class Dec02 implements Solver
     private const UP      = 'up';
     private const DOWN    = 'down';
 
-    /**
-     * @var array<string>
-     */
-    private array $data;
-
-    public function __construct(string $input)
-    {
-        $this->data = stringToStrings($input);
-    }
-
     private function parseInstruction(string $instruction): array
     {
         $parts = explode(' ', $instruction);
         return [$parts[0], (int) $parts[1]];
     }
 
-    public function solvePart1(): int
+    public function solvePart1(string $input): int
     {
+        $input = stringToStrings($input);
         $position = $depth = 0;
 
-        foreach ($this->data as $instruction) {
+        foreach ($input as $instruction) {
             [$command, $amount] = $this->parseInstruction($instruction);
 
             if (self::FORWARD === $command) {
@@ -42,11 +33,12 @@ class Dec02 implements Solver
         return $position * $depth;
     }
 
-    public function solvePart2(): int
+    public function solvePart2(string $input): int
     {
+        $input = stringToStrings($input);
         $aim = $position = $depth = 0;
 
-        foreach ($this->data as $instruction) {
+        foreach ($input as $instruction) {
             [$command, $amount] = $this->parseInstruction($instruction);
 
             if (self::FORWARD === $command) {

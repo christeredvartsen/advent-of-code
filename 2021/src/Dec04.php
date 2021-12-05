@@ -1,52 +1,25 @@
 <?php declare(strict_types=1);
 namespace AoC;
 
+use AoC\Dec04\Input;
 use RuntimeException;
 
 class Dec04 implements Solver
 {
-    private array $nums;
-    private array $boards;
-    private int $numBoards;
-
-    public function __construct(string $input)
-    {
-        $input = trim(str_replace(
-            ['  ', PHP_EOL . PHP_EOL],
-            [' ', PHP_EOL],
-            $input,
-        ));
-        [$nums, $boards] = explode(PHP_EOL, $input, 2);
-
-        $this->nums = array_map('intval', explode(',', $nums));
-
-        $boardRows = array_map(
-            fn (string $nums): array => array_map('intval', explode(' ', trim($nums))),
-            explode(PHP_EOL, $boards),
-        );
-
-        $this->boards = array_chunk(
-            $boardRows,
-            5,
-        );
-
-        $this->numBoards = count($this->boards);
-    }
-
-    private function shoutNumber(int $number, bool $returnFirstWinningBoard = true): array
+    private function shoutNumber(int $number, Input $input, bool $returnFirstWinningBoard = true): array
     {
         $winningBoards = [];
 
-        for ($board = 0; $board < $this->numBoards; $board++) {
+        for ($board = 0; $board < $input->numBoards; $board++) {
             for ($row = 0; $row < 5; $row++) {
                 for ($col = 0; $col < 5; $col++) {
-                    if ($number === $this->boards[$board][$row][$col]) {
-                        $this->boards[$board][$row][$col] = true;
+                    if ($number === $input->boards[$board][$row][$col]) {
+                        $input->boards[$board][$row][$col] = true;
                     }
                 }
             }
 
-            if ($unmarkedSum = $this->bingo($this->boards[$board])) {
+            if ($unmarkedSum = $this->bingo($input->boards[$board])) {
                 $winningBoard = [
                     'score' => $number * $unmarkedSum,
                     'index' => $board,
@@ -104,12 +77,12 @@ class Dec04 implements Solver
         return 0;
     }
 
-    public function solvePart1(): int
+    public function solvePart1(string $input): int
     {
-        $len = count($this->nums);
+        $input = new Input($input);
 
-        for ($i = 0; $i < $len; $i++) {
-            $winningBoards = $this->shoutNumber($this->nums[$i]);
+        for ($i = 0; $i < $input->numNums; $i++) {
+            $winningBoards = $this->shoutNumber($input->nums[$i], $input);
 
             if ([] !== $winningBoards) {
                 return $winningBoards[0]['score'];
@@ -119,22 +92,22 @@ class Dec04 implements Solver
         throw new RuntimeException('No winner :(');
     }
 
-    public function solvePart2(): int
+    public function solvePart2(string $input): int
     {
-        $len = count($this->nums);
+        $input = new Input($input);
 
-        for ($i = 0; $i < $len; $i++) {
-            $winningBoards = $this->shoutNumber($this->nums[$i], false);
+        for ($i = 0; $i < $input->numNums; $i++) {
+            $winningBoards = $this->shoutNumber($input->nums[$i], $input, false);
 
             if ([] !== $winningBoards) {
                 foreach ($winningBoards as $winner) {
-                    unset($this->boards[$winner['index']]);
-                    $this->numBoards--;
+                    unset($input->boards[$winner['index']]);
+                    $input->numBoards--;
                 }
 
-                $this->boards = array_values($this->boards);
+                $input->boards = array_values($input->boards);
 
-                if (0 === $this->numBoards) {
+                if (0 === $input->numBoards) {
                     return $winner['score'];
                 }
             }

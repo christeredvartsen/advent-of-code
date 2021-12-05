@@ -17,6 +17,13 @@ class Dec02Test extends TestCase
         forward 2
     TESTINPUT;
 
+    private Dec02 $solver;
+
+    protected function setUp(): void
+    {
+        $this->solver = new Dec02();
+    }
+
     /**
      * @covers ::solvePart1
      */
@@ -24,12 +31,12 @@ class Dec02Test extends TestCase
     {
         $this->assertSame(
             150,
-            (new Dec02($this->testInput))->solvePart1(),
+            $this->solver->solvePart1($this->testInput),
         );
 
         $this->assertSame(
             1947824,
-            (new Dec02(getInputFile(2)))->solvePart1(),
+            $this->solver->solvePart1(getInputFile(2)),
         );
     }
 
@@ -40,12 +47,12 @@ class Dec02Test extends TestCase
     {
         $this->assertSame(
             900,
-            (new Dec02($this->testInput))->solvePart2(),
+            $this->solver->solvePart2($this->testInput),
         );
 
         $this->assertSame(
             1813062561,
-            (new Dec02(getInputFile(2)))->solvePart2(),
+            $this->solver->solvePart2(getInputFile(2)),
         );
     }
 }

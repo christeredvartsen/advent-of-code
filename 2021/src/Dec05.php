@@ -5,11 +5,9 @@ use InvalidArgumentException;
 
 class Dec05 implements Solver
 {
-    private array $lines;
-
-    public function __construct(string $input)
+    private function parseInput(string $input): array
     {
-        $this->lines = array_map(function (string $line): array {
+        return array_map(function (string $line): array {
             $line = trim($line);
             if (!preg_match('/^(?P<x1>\d+),(?P<y1>\d+) -> (?P<x2>\d+),(?P<y2>\d+)$/', $line, $match)) {
                 throw new InvalidArgumentException('Unknown line format: ' . $line);
@@ -96,12 +94,12 @@ class Dec05 implements Solver
         return $dangerous;
     }
 
-    public function solvePart1(): int
+    public function solvePart1(string $input): int
     {
         // Only keep horizontal and vertical lines for part 1
         $lines = array_values(
             array_filter(
-                $this->lines,
+                $this->parseInput($input),
                 fn (array $l): bool => !$this->isDiagonal($l),
             ),
         );
@@ -109,8 +107,8 @@ class Dec05 implements Solver
         return count($this->getDangerousCoords($lines));
     }
 
-    public function solvePart2(): int
+    public function solvePart2(string $input): int
     {
-        return count($this->getDangerousCoords($this->lines));
+        return count($this->getDangerousCoords($this->parseInput($input)));
     }
 }

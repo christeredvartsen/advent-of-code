@@ -3,32 +3,22 @@ namespace AoC;
 
 class Dec01 implements Solver
 {
-    /**
-     * @var array<int>
-     */
-    private array $data;
-
-    public function __construct(string $input)
+    public function solvePart1(string $input): int
     {
-        $this->data = stringToInts($input);
+        return $this->solve(stringToInts($input));
     }
 
-    public function solvePart1(): int
+    public function solvePart2(string $input): int
     {
-        return $this->solve();
+        return $this->solve(stringToInts($input), 3);
     }
 
-    public function solvePart2(): int
-    {
-        return $this->solve(3);
-    }
-
-    public function solve(int $slice = 1): int
+    public function solve(array $input, int $slice = 1): int
     {
         $increased = 0;
 
-        for ($i = 0; $i < count($this->data) - $slice; $i++) {
-            if (array_sum(array_slice($this->data, $i, $slice)) < array_sum(array_slice($this->data, $i + 1, $slice))) {
+        for ($i = 0; $i < count($input) - $slice; $i++) {
+            if (array_sum(array_slice($input, $i, $slice)) < array_sum(array_slice($input, $i + 1, $slice))) {
                 $increased++;
             }
         }

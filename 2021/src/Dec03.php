@@ -3,16 +3,6 @@ namespace AoC;
 
 class Dec03 implements Solver
 {
-    /**
-     * @var array<string>
-     */
-    private array $report;
-
-    public function __construct(string $input)
-    {
-        $this->report = stringToStrings($input);
-    }
-
     private function split(array $report, int $index): array
     {
         $zeroes = $ones = [];
@@ -49,19 +39,20 @@ class Dec03 implements Solver
         ));
     }
 
-    public function solvePart1(): int
+    public function solvePart1(string $input): int
     {
-        $gamma = $this->getMostCommon($this->report);
+        $gamma = $this->getMostCommon(stringToStrings($input));
         $epsilon = $this->flip($gamma);
         return bindec($gamma) * bindec($epsilon);
     }
 
-    public function solvePart2(): int
+    public function solvePart2(string $input): int
     {
+        $input = stringToStrings($input);
         $oxygenGeneratorRating = $co2ScrubberRating = '';
 
-        $len = $this->report[0];
-        $rest = $this->report;
+        $len = $input[0];
+        $rest = $input;
 
         for ($i = 0; $i < $len; $i++) {
             [$z, $o] = $this->split($rest, $i);
@@ -73,7 +64,7 @@ class Dec03 implements Solver
             }
         }
 
-        $rest = $this->report;
+        $rest = $input;
 
         for ($i = 0; $i < $len; $i++) {
             [$z, $o] = $this->split($rest, $i);
