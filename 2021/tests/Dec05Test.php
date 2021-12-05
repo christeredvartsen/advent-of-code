@@ -36,4 +36,20 @@ class Dec05Test extends TestCase
             (new Dec05(getInputFile(5)))->solvePart1(),
         );
     }
+
+    /**
+     * @covers ::solvePart2
+     */
+    public function testSolvePart2(): void
+    {
+        $this->assertSame(
+            12,
+            (new Dec05($this->testInput))->solvePart2(),
+        );
+
+        $this->assertSame(
+            24164,
+            (new Dec05(getInputFile(5)))->solvePart2(),
+        );
+    }
 }
