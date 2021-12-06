@@ -47,7 +47,7 @@ class Dec05 implements Solver
         );
     }
 
-    public function getDangerousCoords($lines): array
+    private function getDangerousCoords($lines): array
     {
         $map = $this->getMap($lines);
         $dangerous = [];
