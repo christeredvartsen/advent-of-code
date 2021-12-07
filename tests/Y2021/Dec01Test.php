@@ -33,7 +33,7 @@ class Dec01Test extends TestCase
      * @covers ::solvePart1
      * @covers ::solve
      */
-    public function testSolveWithoutSlicing(): void
+    public function testSolvePart1(): void
     {
         $this->assertSame(
             7,
@@ -50,7 +50,7 @@ class Dec01Test extends TestCase
      * @covers ::solvePart2
      * @covers ::solve
      */
-    public function testSolveWithSlicing(): void
+    public function testSolvePart2(): void
     {
         $this->assertSame(
             5,
