@@ -1,6 +1,6 @@
 # Advent of Code
 
-Solutions for [Advent of Code](https://adventofcode.com/) using PHP, currently only for the 2021 version.
+Solutions for [Advent of Code](https://adventofcode.com/) using PHP.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Solutions for [Advent of Code](https://adventofcode.com/) using PHP, currently o
 
 After installation you can execute the included PHP script to solve the different days in the calendar:
 
-    vendor/bin/aoc solve <day>
+    vendor/bin/aoc solve <day> [<year>]
 
 Keep in mind that the inputs used aren't necessarily the same for all users.
 
