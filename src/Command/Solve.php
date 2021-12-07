@@ -52,10 +52,28 @@ class Solve extends Command
         }
 
         $data = file_get_contents(__DIR__ . '/../../input/' . $year . '/' . $day . '.txt');
+        $parts = [
+            '1' => [
+                'result' => null,
+                'time' => null,
+            ],
+            '2' => [
+                'result' => null,
+                'time' => null,
+            ],
+        ];
+
+        $start = microtime(true);
+        $parts['1']['result'] = $solver->solvePart1($data);
+        $parts['1']['ms'] = (microtime(true) - $start) * 1000;
+
+        $start = microtime(true);
+        $parts['2']['result'] = $solver->solvePart2($data);
+        $parts['2']['ms'] = (microtime(true) - $start) * 1000;
 
         $output->write([
-            'Part 1: <info>' . $solver->solvePart1($data) . '</info>',
-            'Part 2: <info>' . $solver->solvePart2($data) . '</info>',
+            sprintf('Part 1: <info>%d</info> (<info>~%.2f</info> ms)', $parts['1']['result'], $parts['1']['ms']),
+            sprintf('Part 2: <info>%d</info> (<info>~%.2f</info> ms)', $parts['2']['result'], $parts['2']['ms']),
         ], true);
 
         return Command::SUCCESS;
