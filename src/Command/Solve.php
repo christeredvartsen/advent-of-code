@@ -7,6 +7,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use function AoC\getInputFile;
+
 class Solve extends Command
 {
     protected static $defaultName = 'solve';
@@ -30,14 +32,14 @@ class Solve extends Command
             return Command::FAILURE;
         }
 
-        $day = sprintf('%02d', $day);
+        $dayAsString = sprintf('%02d', $day);
 
         $output->write([
-            $header = 'Solving ' . date('M jS, Y', strtotime($year . '-12-' . $day)),
+            $header = 'Solving ' . date('M jS, Y', strtotime($year . '-12-' . $dayAsString)),
             str_repeat('=', strlen($header)),
         ], true);
 
-        $solverName = 'AoC\\Y' . $year . '\\Dec' . $day;
+        $solverName = 'AoC\\Y' . $year . '\\Dec' . $dayAsString;
 
         if (!class_exists($solverName)) {
             $output->writeln('<error>No solve for this day (yet)</error>');
@@ -51,7 +53,7 @@ class Solve extends Command
             return Command::FAILURE;
         }
 
-        $data = file_get_contents(__DIR__ . '/../../input/' . $year . '/' . $day . '.txt');
+        $data = getInputFile($day, $year);
         $parts = [
             '1' => [
                 'result' => null,
