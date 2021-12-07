@@ -15,13 +15,15 @@ class Solve extends Command
     protected function configure(): void
     {
         $this
-            ->setHelp('This command will run the solver for a given (part of a) day.')
-            ->addArgument('day', InputArgument::REQUIRED, 'The day to solve');
+            ->setHelp('This command will run the solver for a given day.')
+            ->addArgument('day', InputArgument::REQUIRED, 'The day to solve')
+            ->addArgument('year', InputArgument::OPTIONAL, 'The calendar year', date('Y'));
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $day  = (int) $input->getArgument('day');
+        $year  = (int) $input->getArgument('year');
 
         if (1 > $day || 25 < $day) {
             $output->writeln('<error>Invalid day: ' . $day . '</error>');
@@ -31,11 +33,11 @@ class Solve extends Command
         $day = sprintf('%02d', $day);
 
         $output->write([
-            $header = 'Solving ' . date('M jS, Y', strtotime('2021-12-' . $day)),
+            $header = 'Solving ' . date('M jS, Y', strtotime($year . '-12-' . $day)),
             str_repeat('=', strlen($header)),
         ], true);
 
-        $solverName = 'AoC\\Dec' . $day;
+        $solverName = 'AoC\\Y' . $year . '\\Dec' . $day;
 
         if (!class_exists($solverName)) {
             $output->writeln('<error>No solve for this day (yet)</error>');
@@ -49,7 +51,7 @@ class Solve extends Command
             return Command::FAILURE;
         }
 
-        $data = file_get_contents(__DIR__ . '/../../2021/input/' . $day . '.txt');
+        $data = file_get_contents(__DIR__ . '/../../input/' . $year . '/' . $day . '.txt');
 
         $output->write([
             'Part 1: <info>' . $solver->solvePart1($data) . '</info>',
