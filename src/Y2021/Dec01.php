@@ -16,7 +16,7 @@ class Dec01 implements Solver
         return $this->solve(stringToInts($input), 3);
     }
 
-    public function solve(array $input, int $slice = 1): int
+    private function solve(array $input, int $slice = 1): int
     {
         $increased = 0;
 
