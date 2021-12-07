@@ -42,7 +42,7 @@ class Dec01Test extends TestCase
 
         $this->assertSame(
             1692,
-            $this->solver->solvePart1(getInputFile(1)),
+            $this->solver->solvePart1(getInputFile(1, 2021)),
         );
     }
 
@@ -59,7 +59,7 @@ class Dec01Test extends TestCase
 
         $this->assertSame(
             1724,
-            $this->solver->solvePart2(getInputFile(1)),
+            $this->solver->solvePart2(getInputFile(1, 2021)),
         );
     }
 }

@@ -32,7 +32,7 @@ function stringToStrings(string $input): array
  * @param int $year
  * @return string
  */
-function getInputFile(int $day, int $year = 2021): string
+function getInputFile(int $day, int $year): string
 {
     $input = dirname(__DIR__) . '/input/' . $year . '/' . sprintf('%02d.txt', $day);
 
