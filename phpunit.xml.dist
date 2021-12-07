@@ -10,11 +10,15 @@
          verbose="true">
   <coverage processUncoveredFiles="true">
     <include>
+      <directory suffix=".php">src</directory>
       <directory suffix=".php">2021/src</directory>
     </include>
   </coverage>
 
   <testsuites>
+    <testsuite name="Common">
+      <directory suffix="Test.php">tests</directory>
+    </testsuite>
     <testsuite name="2021">
       <directory suffix="Test.php">2021/tests</directory>
     </testsuite>
