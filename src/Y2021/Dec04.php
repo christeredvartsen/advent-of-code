@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
-namespace AoC;
+namespace AoC\Y2021;
 
-use AoC\Dec04\Input;
+use AoC\Solver;
+use AoC\Y2021\Dec04\Input;
 use RuntimeException;
 
 class Dec04 implements Solver

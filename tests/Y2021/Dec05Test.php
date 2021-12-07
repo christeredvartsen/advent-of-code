@@ -1,33 +1,32 @@
 <?php declare(strict_types=1);
-namespace AoC;
+namespace AoC\Y2021;
 
 use PHPUnit\Framework\TestCase;
+use function AoC\getInputFile;
 
 /**
- * @coversDefaultClass AoC\Dec03
+ * @coversDefaultClass AoC\Dec05
  */
-class Dec03Test extends TestCase
+class Dec05Test extends TestCase
 {
     private string $testInput = <<<TESTINPUT
-        00100
-        11110
-        10110
-        10111
-        10101
-        01111
-        00111
-        11100
-        10000
-        11001
-        00010
-        01010
+        0,9 -> 5,9
+        8,0 -> 0,8
+        9,4 -> 3,4
+        2,2 -> 2,1
+        7,0 -> 7,4
+        6,4 -> 2,0
+        0,9 -> 2,9
+        3,4 -> 1,4
+        0,0 -> 8,8
+        5,5 -> 8,2
     TESTINPUT;
 
-    private Dec03 $solver;
+    private Dec05 $solver;
 
     protected function setUp(): void
     {
-        $this->solver = new Dec03();
+        $this->solver = new Dec05();
     }
 
     /**
@@ -36,13 +35,13 @@ class Dec03Test extends TestCase
     public function testSolvePart1(): void
     {
         $this->assertSame(
-            198,
+            5,
             $this->solver->solvePart1($this->testInput),
         );
 
         $this->assertSame(
-            4147524,
-            $this->solver->solvePart1(getInputFile(3)),
+            7473,
+            $this->solver->solvePart1(getInputFile(5)),
         );
     }
 
@@ -52,13 +51,13 @@ class Dec03Test extends TestCase
     public function testSolvePart2(): void
     {
         $this->assertSame(
-            230,
+            12,
             $this->solver->solvePart2($this->testInput),
         );
 
         $this->assertSame(
-            3570354,
-            $this->solver->solvePart2(getInputFile(3)),
+            24164,
+            $this->solver->solvePart2(getInputFile(5)),
         );
     }
 }

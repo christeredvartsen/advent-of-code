@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-namespace AoC\Dec04;
+namespace AoC\Y2021\Dec04;
 
 class Input
 {

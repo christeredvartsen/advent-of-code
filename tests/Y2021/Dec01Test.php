@@ -1,10 +1,11 @@
 <?php declare(strict_types=1);
-namespace AoC;
+namespace AoC\Y2021;
 
 use PHPUnit\Framework\TestCase;
+use function AoC\getInputFile as getInputFile;
 
 /**
- * @coversDefaultClass AoC\Dec01
+ * @coversDefaultClass AoC\Y2021\Dec01
  */
 class Dec01Test extends TestCase
 {

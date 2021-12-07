@@ -22,10 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "AoC\\": [
-        "src",
-        "2021/src"
-      ]
+      "AoC\\": "src"
     },
     "files": [
       "src/functions.php"
@@ -33,7 +30,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "AoC\\": "2021/tests"
+      "AoC\\": "tests"
     }
   },
   "scripts": {

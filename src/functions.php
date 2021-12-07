@@ -30,10 +30,11 @@ function stringToStrings(string $input): array
  *
  * @param int $day
  * @param int $year
+ * @return string
  */
 function getInputFile(int $day, int $year = 2021): string
 {
-    $input = __DIR__ . '/../' . $year . '/input/' . sprintf('%02d.txt', $day);
+    $input = dirname(__DIR__) . '/input/' . $year . '/' . sprintf('%02d.txt', $day);
 
     if (!file_exists($input)) {
         throw new InvalidArgumentException(sprintf('Input %s does not exist', $input));

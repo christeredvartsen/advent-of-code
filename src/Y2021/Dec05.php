@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
-namespace AoC;
+namespace AoC\Y2021;
 
+use AoC\Solver;
 use InvalidArgumentException;
 
 class Dec05 implements Solver

@@ -1,5 +1,10 @@
 <?php declare(strict_types=1);
-namespace AoC;
+namespace AoC\Y2021;
+
+use AoC\Solver;
+use function AoC\avg;
+use function AoC\median;
+use function AoC\triangular;
 
 class Dec07 implements Solver
 {
