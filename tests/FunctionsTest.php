@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 class FunctionsTest extends TestCase
 {
     /**
-     * @covers ::triangular
+     * @covers AoC\triangular
      * @testWith [1, 1]
      *           [2, 3]
      *           [3, 6]
@@ -18,7 +18,7 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @covers ::median
+     * @covers AoC\median
      * @testWith [1, [1]]
      *           [5, [1, 2, 4, 5, 6, 60, 100]]
      *           [5, [6, 5, 4, 100, 1, 2, 60], false]
@@ -29,7 +29,7 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @covers ::diff
+     * @covers AoC\diff
      * @testWith [3, 1, 4]
      *           [3, 2, -1]
      *           [0, 0, 0]
@@ -40,7 +40,7 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @covers ::isEven
+     * @covers AoC\isEven
      * @testWith [0, true]
      *           [1, false]
      *           [2, true]
@@ -51,7 +51,7 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @covers ::avg
+     * @covers AoC\avg
      * @testWith [[1, 2, 3], 2]
      *           [[1, 2, 3, 3], 2.25]
      *           [[1], 1]

@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 use function AoC\getInputFile;
 
 /**
- * @coversDefaultClass AoC\Dec05
+ * @coversDefaultClass AoC\Y2021\Dec05
  */
 class Dec05Test extends TestCase
 {
