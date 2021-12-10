@@ -13,67 +13,79 @@ class Dec09 implements Solver
         );
     }
 
-    public function getDepths(array $map): array
+    public function solvePart1(string $input): int
     {
-        $depths = [];
+        $map = $this->parseInput($input);
+        $sum = 0;
 
         foreach ($map as $y => $line) {
             foreach ($line as $x => $depth) {
                 if (
-                    $depth < ($map[$y][$x - 1] ?? 9) && // left
-                    $depth < ($map[$y][$x + 1] ?? 9) && // right
-                    $depth < ($map[$y - 1][$x] ?? 9) && // above
-                    $depth < ($map[$y + 1][$x] ?? 9)    // below
+                    $depth < ($map[$y][$x - 1] ?? 9) &&
+                    $depth < ($map[$y][$x + 1] ?? 9) &&
+                    $depth < ($map[$y - 1][$x] ?? 9) &&
+                    $depth < ($map[$y + 1][$x] ?? 9)
                 ) {
-                    $depths[] = [
-                        'y' => $y,
-                        'x' => $x,
-                        'depth' => $depth,
-                    ];
+                    $sum += 1 + $depth;
                 }
             }
         }
 
-        return $depths;
-    }
-
-    private function getBasinSize(array $map, int $y, int $x): int
-    {
-        $size = 0;
-        $depthsToCheck = [[$y, $x]];
-
-        while ([$y, $x] = array_pop($depthsToCheck)) {
-            $left  = [$y, $x - 1];
-            $right = [$y, $x + 1];
-            $above = [$y - 1, $x];
-            $below = [$y + 1, $x];
-
-            foreach ([$above, $right, $below, $left] as [$dirY, $dirX]) {
-                if (($map[$dirY][$dirX] ?? 9) !== 9) {
-                    $map[$dirY][$dirX] = 9;
-                    $depthsToCheck[] = [$dirY, $dirX];
-                    $size++;
-                }
-            }
-        }
-
-        return $size;
-    }
-
-    public function solvePart1(string $input): int
-    {
-        $depths = $this->getDepths($this->parseInput($input));
-        return array_sum(array_column($depths, 'depth')) + count($depths);
+        return $sum;
     }
 
     public function solvePart2(string $input): int
     {
         $map = $this->parseInput($input);
-        $basinSizes = array_map(
-            fn (array $depth): int => $this->getBasinSize($map, $depth['y'], $depth['x']),
-            $this->getDepths($this->parseInput($input)),
-        );
-        sort($basinSizes);
-        return array_product(array_slice($basinSizes, -3));
+        $rows = count($map);
+        $cols = count($map[0]);
+        $basins = [];
+
+        for ($y = 0; $y < $rows; $y++) {
+            for ($x = 0; $x < $cols; $x++) {
+                if ($map[$y][$x] === 9) {
+                    continue;
+                }
+
+                $basins[] = $this->bfs($map, $rows, $cols, $y, $x);
+            }
+        }
+        rsort($basins);
+        return $basins[0] * $basins[1] * $basins[2];
+    }
+
+    private function bfs(array &$map, int $rows, int $cols, int $y, int $x): int
+    {
+        $size = 0;
+        $queue = [[$y, $x]];
+        --$rows;
+        --$cols;
+
+        while ([$y, $x] = array_shift($queue)) {
+            if ($map[$y][$x] === 9) {
+                continue;
+            }
+
+            $map[$y][$x] = 9;
+            $size += 1;
+
+            if ($y > 0 && ($map[$y - 1][$x] !== 9)) {
+                $queue[] = [$y - 1, $x];
+            }
+
+            if ($y < $rows && ($map[$y + 1][$x] !== 9)) {
+                $queue[] = [$y + 1, $x];
+            }
+
+            if ($x > 0 && ($map[$y][$x - 1] !== 9)) {
+                $queue[] = [$y, $x - 1];
+            }
+
+            if ($x < $cols && ($map[$y][$x + 1] !== 9)) {
+                $queue[] = [$y, $x + 1];
+            }
+        }
+
+        return $size;
     }
 }

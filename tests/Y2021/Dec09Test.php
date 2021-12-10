@@ -50,8 +50,6 @@ class Dec09Test extends TestCase
             $this->solver->solvePart2($this->testInput),
         );
 
-        return;
-
         $this->assertSame(
             1056330,
             $this->solver->solvePart2(getInputFile(9, 2021)),
