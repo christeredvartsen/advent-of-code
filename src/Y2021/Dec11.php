@@ -25,7 +25,7 @@ class Dec11 implements Solver
         );
     }
 
-    public function flash(array &$map, array $willFlash): int
+    private function flash(array &$map, array $willFlash): int
     {
         $hasFlashed = [];
 
