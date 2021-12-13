@@ -8,8 +8,8 @@ class Dec13 implements Solver
     private function parseInput(string $input): array
     {
         [$dots, $folds] = explode(PHP_EOL . PHP_EOL, trim($input));
-        $dots = explode(PHP_EOL, $dots);
-        $folds = explode(PHP_EOL, $folds);
+        $dots = array_map('trim', explode(PHP_EOL, $dots));
+        $folds = array_map('trim', explode(PHP_EOL, $folds));
 
         $dots = array_combine(
             $dots,
@@ -21,7 +21,7 @@ class Dec13 implements Solver
 
         $folds = array_map(function (string $fold): array {
             $parts = explode('=', $fold);
-            return [trim($parts[0]), (int) $parts[1]];
+            return [$parts[0], (int) $parts[1]];
         }, $folds);
 
         return [$dots, $folds];
