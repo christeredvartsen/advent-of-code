@@ -3,6 +3,6 @@ namespace AoC;
 
 interface Solver
 {
-    public function solvePart1(string $input): int;
-    public function solvePart2(string $input): int;
+    public function solvePart1(string $input);
+    public function solvePart2(string $input);
 }

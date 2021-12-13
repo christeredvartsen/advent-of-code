@@ -16,7 +16,7 @@ class Dec02 implements Solver
         return [$parts[0], (int) $parts[1]];
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $input = stringToStrings($input);
         $position = $depth = 0;
@@ -36,7 +36,7 @@ class Dec02 implements Solver
         return $position * $depth;
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $input = stringToStrings($input);
         $aim = $position = $depth = 0;

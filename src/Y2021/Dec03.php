@@ -42,14 +42,14 @@ class Dec03 implements Solver
         ));
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $gamma = $this->getMostCommon(stringToStrings($input));
         $epsilon = $this->flip($gamma);
         return bindec($gamma) * bindec($epsilon);
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $input = stringToStrings($input);
         $oxygenGeneratorRating = $co2ScrubberRating = '';

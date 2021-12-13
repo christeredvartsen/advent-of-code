@@ -78,7 +78,7 @@ class Dec04 implements Solver
         return 0;
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $input = new Input($input);
 
@@ -93,7 +93,7 @@ class Dec04 implements Solver
         throw new RuntimeException('No winner :(');
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $input = new Input($input);
 

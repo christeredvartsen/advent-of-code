@@ -60,9 +60,9 @@ class Dec13Test extends TestCase
     /**
      * @covers ::solvePart2
      */
-    public function testSolvePart2WithTestInput(): void
+    public function testSolvePart2(): void
     {
-        $this->expectOutputString(
+        $this->assertSame(
             <<<OUTPUT
             #####
             #...#
@@ -72,14 +72,8 @@ class Dec13Test extends TestCase
             OUTPUT,
             $this->solver->solvePart2($this->testInput),
         );
-    }
 
-    /**
-     * @covers ::solvePart2
-     */
-    public function testSolvePart2WithRealInput(): void
-    {
-        $this->expectOutputString(
+        $this->assertSame(
             <<<OUTPUT
             ####..##..####.#..#.#....#..#.####.####
             #....#..#.#....#..#.#....#..#....#.#...

@@ -73,10 +73,31 @@ class Solve extends Command
         $parts['2']['result'] = $solver->solvePart2($data);
         $parts['2']['ms'] = (microtime(true) - $start) * 1000;
 
-        $output->write([
-            sprintf('Part 1: <info>%d</info> (<info>~%.2f</info> ms)', $parts['1']['result'], $parts['1']['ms']),
-            sprintf('Part 2: <info>%d</info> (<info>~%.2f</info> ms)', $parts['2']['result'], $parts['2']['ms']),
-        ], true);
+        foreach (['1', '2'] as $part) {
+            $result = $parts[$part]['result'];
+            $ms = $parts[$part]['ms'];
+
+            $output->write(sprintf('Part %d: ', $part));
+
+            if (false !== strpos((string) $result, PHP_EOL)) {
+                $longestLine = max(array_map(fn (string $line): int => strlen($line), explode(PHP_EOL, $result)));
+                $separator = PHP_EOL . str_repeat('-', $longestLine) . PHP_EOL;
+
+                $output->writeln(
+                    sprintf(
+                        '%s<info>%s</info>%s(<info>~%.2f</info> ms)',
+                        $separator,
+                        $result,
+                        $separator,
+                        $ms,
+                    ),
+                );
+            } else {
+                $output->writeln(
+                    sprintf('<info>%d</info> (<info>~%.2f</info> ms)', $result, $ms),
+                );
+            }
+        }
 
         return Command::SUCCESS;
     }

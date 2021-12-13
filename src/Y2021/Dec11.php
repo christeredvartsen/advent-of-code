@@ -57,7 +57,7 @@ class Dec11 implements Solver
         return count($hasFlashed);
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $map = $this->parseInput($input);
         $sum = 0;
@@ -81,7 +81,7 @@ class Dec11 implements Solver
         return $sum;
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $map = $this->parseInput($input);
         $step = 0;

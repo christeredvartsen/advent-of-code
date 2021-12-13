@@ -13,7 +13,7 @@ class Dec09 implements Solver
         );
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $map = $this->parseInput($input);
         $sum = 0;
@@ -34,7 +34,7 @@ class Dec09 implements Solver
         return $sum;
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $map = $this->parseInput($input);
         $rows = count($map);

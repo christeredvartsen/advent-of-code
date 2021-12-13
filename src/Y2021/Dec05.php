@@ -95,7 +95,7 @@ class Dec05 implements Solver
         return $dangerous;
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         // Only keep horizontal and vertical lines for part 1
         $lines = array_values(
@@ -108,7 +108,7 @@ class Dec05 implements Solver
         return count($this->getDangerousCoords($lines));
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         return count($this->getDangerousCoords($this->parseInput($input)));
     }

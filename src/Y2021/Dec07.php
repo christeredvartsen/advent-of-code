@@ -15,14 +15,14 @@ class Dec07 implements Solver
         return $values;
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $positions = $this->parseInput($input);
         $median = (int) median($positions);
         return array_sum(array_map(fn (int $p): int => abs($p - $median), $positions));
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $positions = $this->parseInput($input);
         $avg = avg($positions);

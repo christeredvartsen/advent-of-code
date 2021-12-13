@@ -69,7 +69,7 @@ class Dec12 implements Solver
         }
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $caves = $this->parseInput($input);
         $numPaths = 0;
@@ -77,7 +77,7 @@ class Dec12 implements Solver
         return $numPaths;
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $caves = $this->parseInput($input);
         $numPaths = 0;

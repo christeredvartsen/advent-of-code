@@ -5,13 +5,13 @@ use AoC\Solver;
 
 class Dec01 implements Solver
 {
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $input = trim($input);
         return substr_count($input, '(') - substr_count($input, ')');
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $chars = str_split(trim($input));
         $num = count($chars);

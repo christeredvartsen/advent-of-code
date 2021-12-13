@@ -118,7 +118,7 @@ class Dec08 implements Solver
         throw new InvalidArgumentException('Invalid signal: ' . $signal);
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         return array_sum(
             array_map(
@@ -131,7 +131,7 @@ class Dec08 implements Solver
         );
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         [$allPatterns, $allOutputs] = $this->parseInput($input);
         $emptyMapping = array_fill_keys(range('a', 'g'), null);

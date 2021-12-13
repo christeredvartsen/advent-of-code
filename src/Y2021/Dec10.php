@@ -73,7 +73,7 @@ class Dec10 implements Solver
         return [$score, false];
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         $sum = 0;
         $scores = array_map(
@@ -90,7 +90,7 @@ class Dec10 implements Solver
         return $sum;
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         $scores = array_map(
             fn (array $score): int => $score[0],

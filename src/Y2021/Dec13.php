@@ -45,13 +45,13 @@ class Dec13 implements Solver
         return $dots;
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         [$dots, $folds] = $this->parseInput($input);
         return count($this->fold($dots, [$folds[0]]));
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         [$dots, $folds] = $this->parseInput($input);
         $dots = $this->fold($dots, $folds);
@@ -67,8 +67,6 @@ class Dec13 implements Solver
             $output .= PHP_EOL;
         }
 
-        echo trim($output);
-
-        return 0;
+        return trim($output);
     }
 }

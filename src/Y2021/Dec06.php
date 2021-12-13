@@ -35,12 +35,12 @@ class Dec06 implements Solver
         return $fish;
     }
 
-    public function solvePart1(string $input): int
+    public function solvePart1(string $input)
     {
         return $this->numFishAfterDays($this->parseInput($input), 80);
     }
 
-    public function solvePart2(string $input): int
+    public function solvePart2(string $input)
     {
         return $this->numFishAfterDays($this->parseInput($input), 256);
     }
