@@ -123,10 +123,7 @@ class Dec16 implements Solver
             return $packet['value'];
         }
 
-        $values = array_map(
-            fn (array $p): int => $this->getPacketValue($p),
-            $packet['subPackets'],
-        );
+        $values = array_map([$this, 'getPacketValue'], $packet['subPackets']);
 
         switch ($id) {
             case self::TYPE_SUM: return array_sum($values);
