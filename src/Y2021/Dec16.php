@@ -2,6 +2,7 @@
 namespace AoC\Y2021;
 
 use AoC\Solver;
+use InvalidArgumentException;
 
 class Dec16 implements Solver
 {
@@ -117,25 +118,26 @@ class Dec16 implements Solver
     private function getPacketValue(array $packet): int
     {
         $id = $packet['id'];
-        $packets = $packet['subPackets'];
 
-        if (self::TYPE_SUM === $id) {
-            return array_reduce($packets, fn (int $s, array $p): int => $s + $this->getPacketValue($p), 0);
-        } elseif (self::TYPE_PRODUCT === $id) {
-            return array_reduce($packets, fn (int $s, array $p): int => $s * $this->getPacketValue($p), 1);
-        } elseif (self::TYPE_MIN === $id) {
-            return array_reduce($packets, fn (int $c, array $p): int => $c < ($v = $this->getPacketValue($p)) ? $c : $v, PHP_INT_MAX);
-        } elseif (self::TYPE_MAX === $id) {
-            return array_reduce($packets, fn (int $c, array $p): int => $c > ($v = $this->getPacketValue($p)) ? $c : $v, 0);
-        } elseif (self::TYPE_GT === $id) {
-            return (int) ($this->getPacketValue($packets[0]) > $this->getPacketValue($packets[1]));
-        } elseif (self::TYPE_LT === $id) {
-            return (int) ($this->getPacketValue($packets[0]) < $this->getPacketValue($packets[1]));
-        } elseif (self::TYPE_EQ === $id) {
-            return (int) ($this->getPacketValue($packets[0]) === $this->getPacketValue($packets[1]));
+        if (self::TYPE_LITERAL === $id) {
+            return $packet['value'];
         }
 
-        return $packet['value'];
+        $values = array_map(
+            fn (array $p): int => $this->getPacketValue($p),
+            $packet['subPackets'],
+        );
+
+        switch ($id) {
+            case self::TYPE_SUM: return array_sum($values);
+            case self::TYPE_PRODUCT: return array_product($values);
+            case self::TYPE_MIN: return min($values);
+            case self::TYPE_MAX: return max($values);
+            case self::TYPE_GT: return (int) ($values[0] > $values[1]);
+            case self::TYPE_LT: return (int) ($values[0] < $values[1]);
+            case self::TYPE_EQ: return (int) ($values[0] === $values[1]);
+            default: throw new InvalidArgumentException('Invalid type ID');
+        }
     }
 
     public function solvePart1(string $input)
