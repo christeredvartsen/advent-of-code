@@ -60,4 +60,18 @@ class FunctionsTest extends TestCase
     {
         $this->assertSame($avg, avg($input));
     }
+
+    /**
+     * @covers AoC\reverseTriangular
+     * @testWith [21, 6]
+     *           [15, 5]
+     *           [10, 4]
+     *           [6, 3]
+     *           [3, 2]
+     *           [1, 1]
+     */
+    public function testReverseTriangular(int $triangular, int $result)
+    {
+        $this->assertSame($result, reverseTriangular($triangular));
+    }
 }

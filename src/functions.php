@@ -26,10 +26,11 @@ function stringToStrings(string $input): array
 }
 
 /**
- * Get the input for a specific day
+ * Get the trimmed input for a specific day
  *
  * @param int $day
  * @param int $year
+ * @throws InvalidArgumentException
  * @return string
  */
 function getInputFile(int $day, int $year): string
@@ -40,7 +41,7 @@ function getInputFile(int $day, int $year): string
         throw new InvalidArgumentException(sprintf('Input %s does not exist', $input));
     }
 
-    return file_get_contents($input);
+    return trim(file_get_contents($input));
 }
 
 /**
@@ -85,6 +86,17 @@ function median(array $values, bool $isSorted = true): float
 function triangular(int $n): int
 {
     return ($n * ($n + 1)) / 2;
+}
+
+/**
+ * Get the last number in the series adding up to the triangular number
+ *
+ * @param int $triangular
+ * @return int
+ */
+function reverseTriangular(int $triangular): int
+{
+    return (int) floor(sqrt($triangular * 2));
 }
 
 /**

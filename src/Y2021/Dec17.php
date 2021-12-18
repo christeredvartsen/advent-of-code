@@ -3,6 +3,8 @@ namespace AoC\Y2021;
 
 use AoC\Solver;
 
+use function AoC\reverseTriangular;
+
 class Dec17 implements Solver
 {
     private function parseInput(string $input): array
@@ -15,7 +17,7 @@ class Dec17 implements Solver
     {
         $hits = [];
 
-        for ($vX = (int) ceil(sqrt($x1)); $vX <= $x2; $vX++) {
+        for ($vX = reverseTriangular($x1); $vX <= $x2; $vX++) {
             for ($vY = $y1; $vY < -$y1; $vY++) {
                 $velocity = [
                     'x' => $vX,
