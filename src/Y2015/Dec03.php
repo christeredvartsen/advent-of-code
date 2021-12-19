@@ -5,11 +5,6 @@ use AoC\Solver;
 
 class Dec03 implements Solver
 {
-    public const NORTH = '^';
-    public const EAST = '>';
-    public const WEST = '<';
-    public const SOUTH = 'v';
-
     private function deliverPresents(string $instructions, int $numSantas = 1): array
     {
         $houses['0,0'] = $numSantas;
