@@ -15,6 +15,7 @@ class Dec04 implements Solver
             }
         }
     }
+
     public function solvePart1(string $input)
     {
         return $this->findIndex($input, 5);
