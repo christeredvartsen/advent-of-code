@@ -19,6 +19,10 @@
       <directory suffix="Test.php">tests/Y2015</directory>
     </testsuite>
 
+    <testsuite name="2016">
+      <directory suffix="Test.php">tests/Y2016</directory>
+    </testsuite>
+
     <testsuite name="2021">
       <directory suffix="Test.php">tests/Y2021</directory>
     </testsuite>

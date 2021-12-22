@@ -94,7 +94,7 @@ class Solve extends Command
                 );
             } else {
                 $output->writeln(
-                    sprintf('<info>%d</info> (<info>~%.2f</info> ms)', $result, $ms),
+                    sprintf('<info>%s</info> (<info>~%.2f</info> ms)', $result, $ms),
                 );
             }
         }
