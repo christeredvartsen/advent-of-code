@@ -10,13 +10,6 @@ use function AoC\getInputFile;
  */
 class Dec08Test extends TestCase
 {
-    private string $testInput = <<<TESTINPUT
-    rect 3x2
-    rotate column x=1 by 1
-    rotate row y=0 by 4
-    rotate column x=1 by 1
-    TESTINPUT;
-
     private Dec08 $solver;
 
     protected function setUp(): void
