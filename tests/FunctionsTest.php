@@ -70,8 +70,20 @@ class FunctionsTest extends TestCase
      *           [3, 2]
      *           [1, 1]
      */
-    public function testReverseTriangular(int $triangular, int $result)
+    public function testReverseTriangular(int $triangular, int $result): void
     {
         $this->assertSame($result, reverseTriangular($triangular));
+    }
+
+    /**
+     * @covers AoC\sortString
+     * @testWith ["abc", false, "abc"]
+     *           ["bca", false, "abc"]
+     *           ["cba", true,  "cba"]
+     *           ["abc", true,  "cba"]
+     */
+    public function testSortString(string $string, bool $reverse, string $result): void
+    {
+        $this->assertSame($result, sortString($string, $reverse));
     }
 }

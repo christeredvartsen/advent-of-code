@@ -121,3 +121,23 @@ function avg(array $values): float
 {
     return array_sum($values) / count($values);
 }
+
+/**
+ * Sort letters in a string
+ *
+ * @param string $string
+ * @param bool $reverse
+ * @return string
+ */
+function sortString(string $string, bool $reverse = false): string
+{
+    $letters = str_split($string);
+
+    if ($reverse) {
+        rsort($letters);
+    } else {
+        sort($letters);
+    }
+
+    return implode($letters);
+}
