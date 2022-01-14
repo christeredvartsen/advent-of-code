@@ -14,6 +14,7 @@ class Dec04 implements Solver
             explode(PHP_EOL, $input),
         );
     }
+
     public function solvePart1(string $input)
     {
         return count(array_filter(
