@@ -66,10 +66,18 @@ class Dec07 implements Solver
                 $b = $get($instruction[2], $wires);
 
                 switch ($instruction[1]) {
-                    case 'LSHIFT': $wires[$wire] = ($a << $b); break;
-                    case 'RSHIFT': $wires[$wire] = ($a >> $b); break;
-                    case 'AND': $wires[$wire] = ($a & $b); break;
-                    case 'OR': $wires[$wire] = ($a | $b); break;
+                    case 'LSHIFT':
+                        $wires[$wire] = ($a << $b);
+                        break;
+                    case 'RSHIFT':
+                        $wires[$wire] = ($a >> $b);
+                        break;
+                    case 'AND':
+                        $wires[$wire] = ($a & $b);
+                        break;
+                    case 'OR':
+                        $wires[$wire] = ($a | $b);
+                        break;
                 }
             } else {
                 $wires[$wire] = ~ $get($instruction[1], $wires);

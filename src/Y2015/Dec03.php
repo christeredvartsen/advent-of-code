@@ -14,10 +14,18 @@ class Dec03 implements Solver
             $santa = &$santas[$i % $numSantas];
 
             switch ($instructions[$i]) {
-                case '^': $santa['y'] -= 1; break;
-                case '>': $santa['x'] += 1; break;
-                case '<': $santa['x'] -= 1; break;
-                case 'v': $santa['y'] += 1; break;
+                case '^':
+                    $santa['y'] -= 1;
+                    break;
+                case '>':
+                    $santa['x'] += 1;
+                    break;
+                case '<':
+                    $santa['x'] -= 1;
+                    break;
+                case 'v':
+                    $santa['y'] += 1;
+                    break;
             }
 
             $pos = $santa['x'] . ',' . $santa['y'];

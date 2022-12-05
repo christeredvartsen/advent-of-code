@@ -2,6 +2,7 @@
 namespace AoC\Y2015;
 
 use PHPUnit\Framework\TestCase;
+
 use function AoC\getInputFile as getInputFile;
 
 /**

@@ -32,10 +32,18 @@ class Dec01 implements Solver
             }
 
             switch ($facing) {
-                case 0: $adjust = ['y', 1]; break;
-                case 90: $adjust = ['x', 1]; break;
-                case 180: $adjust = ['y', -1]; break;
-                case 270: $adjust = ['x', -1]; break;
+                case 0:
+                    $adjust = ['y', 1];
+                    break;
+                case 90:
+                    $adjust = ['x', 1];
+                    break;
+                case 180:
+                    $adjust = ['y', -1];
+                    break;
+                case 270:
+                    $adjust = ['x', -1];
+                    break;
             }
 
             for ($i = 0; $i < $distance; $i++) {

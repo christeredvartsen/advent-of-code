@@ -2,6 +2,7 @@
 namespace AoC\Y2021;
 
 use AoC\Solver;
+
 use function AoC\stringToStrings;
 
 class Dec03 implements Solver

@@ -27,10 +27,18 @@ class Dec03 implements Solver
     private function move(array $data): array
     {
         switch ($data['facing']) {
-            case 'U': $data['v'] += 1; break;
-            case 'D': $data['v'] -= 1; break;
-            case 'L': $data['h'] -= 1; break;
-            case 'R': $data['h'] += 1; break;
+            case 'U':
+                $data['v'] += 1;
+                break;
+            case 'D':
+                $data['v'] -= 1;
+                break;
+            case 'L':
+                $data['h'] -= 1;
+                break;
+            case 'R':
+                $data['h'] += 1;
+                break;
         }
 
         if ($this->shouldTurn($data['v'], $data['h'])) {
