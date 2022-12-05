@@ -34,8 +34,8 @@ jobs:
       - name: Install dependencies
         run: composer install
 
-      - name: Run unit tests
-        run: vendor/bin/phpunit --verbose
-
       - name: Check coding standard
         run: php-cs-fixer fix --dry-run --diff
+
+      - name: Run unit tests
+        run: vendor/bin/phpunit --verbose
