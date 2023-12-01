@@ -58,7 +58,7 @@ function isEven(int $int): bool
 /**
  * Get the median from a list of numbers
  *
- * @param array<floats> $values
+ * @param array<float> $values
  * @return int
  */
 function median(array $values, bool $isSorted = true): float
