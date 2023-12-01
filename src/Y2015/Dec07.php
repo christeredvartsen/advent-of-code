@@ -80,7 +80,7 @@ class Dec07 implements Solver
                         break;
                 }
             } else {
-                $wires[$wire] = ~ $get($instruction[1], $wires);
+                $wires[$wire] = ~$get($instruction[1], $wires);
             }
         }
 

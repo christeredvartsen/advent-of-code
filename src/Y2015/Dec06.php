@@ -38,7 +38,7 @@ class Dec06 implements Solver
     {
         return array_sum($this->applyInstructionsToGrid(
             $this->parseInput($input),
-            fn (string $i, int $v): int => self::TOGGLE === $i ? $v^1 : (self::ON === $i ? 1 : 0),
+            fn (string $i, int $v): int => self::TOGGLE === $i ? $v ^ 1 : (self::ON === $i ? 1 : 0),
         ));
     }
 
