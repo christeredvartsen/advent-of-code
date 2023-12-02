@@ -3,13 +3,15 @@ namespace AoC\Y2023;
 
 use AoC\Solver;
 
+use function AoC\stringToStrings;
+
 class Dec01 implements Solver
 {
     public function solvePart1(string $input)
     {
         $sum = 0;
 
-        foreach (explode(PHP_EOL, $input) as $line) {
+        foreach (stringToStrings($input) as $line) {
             preg_match_all('/\d/', $line, $matches);
             $sum += (int) ($matches[0][0] . end($matches[0]));
         }
