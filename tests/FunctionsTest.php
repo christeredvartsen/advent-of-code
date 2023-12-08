@@ -86,4 +86,22 @@ class FunctionsTest extends TestCase
     {
         $this->assertSame($result, sortString($string, $reverse));
     }
+
+    /**
+     * @covers AoC\isBetween
+     * @testWith [false, 0, 1, 3, true]
+     *           [true,  1, 1, 3, true]
+     *           [true,  2, 1, 3, true]
+     *           [true,  3, 1, 3, true]
+     *           [false, 4, 1, 3, true]
+     *           [false, 0, 1, 3, false]
+     *           [false, 1, 1, 3, false]
+     *           [true,  2, 1, 3, false]
+     *           [false, 3, 1, 3, false]
+     *           [false, 4, 1, 3, false]
+     */
+    public function testInBetween(bool $result, int $x, int $min, int $max, bool $inclusive): void
+    {
+        $this->assertSame($result, isBetween($x, $min, $max, $inclusive));
+    }
 }

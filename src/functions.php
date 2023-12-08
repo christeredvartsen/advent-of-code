@@ -141,3 +141,15 @@ function sortString(string $string, bool $reverse = false): string
 
     return implode($letters);
 }
+
+/**
+ * Check if value $x is between $min and $max
+ *
+ *
+ */
+function isBetween(int $x, int $min, int $max, bool $inclusive = true): bool
+{
+    return $inclusive
+    ? $x >= $min && $x <= $max
+    : $x > $min && $x < $max;
+}
