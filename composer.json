@@ -13,12 +13,12 @@
   ],
   "require": {
     "php": ">=8.1",
-    "symfony/console": "^6.2"
+    "symfony/console": "^7.2"
   },
   "require-dev": {
     "imbo/imbo-coding-standard": "^2.0",
-    "phpunit/phpunit": "^10.0",
-    "symfony/var-dumper": "^6.2"
+    "phpunit/phpunit": "^11.4",
+    "symfony/var-dumper": "^7.2"
   },
   "autoload": {
     "psr-4": {
@@ -34,8 +34,8 @@
     }
   },
   "scripts": {
-    "test": "vendor/bin/phpunit --verbose",
-    "test:coverage": "vendor/bin/phpunit --verbose --coverage-html build/coverage",
+    "test": "vendor/bin/phpunit",
+    "test:coverage": "vendor/bin/phpunit --coverage-html build/coverage",
     "cs": "php-cs-fixer fix --dry-run --diff",
     "ci": [
       "@test",
