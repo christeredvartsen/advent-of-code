@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" bootstrap="vendor/autoload.php" executionOrder="depends,defects" beStrictAboutOutputDuringTests="true" cacheDirectory=".phpunit.cache" requireCoverageMetadata="true" beStrictAboutCoverageMetadata="false">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.4/phpunit.xsd" executionOrder="depends,defects" beStrictAboutOutputDuringTests="true" requireCoverageMetadata="true" displayDetailsOnTestsThatTriggerDeprecations="true" displayDetailsOnPhpunitDeprecations="true">
   <coverage/>
   <testsuites>
-    <testsuite name="2015">
-      <directory suffix="Test.php">tests/Y2015</directory>
-    </testsuite>
-    <testsuite name="2016">
-      <directory suffix="Test.php">tests/Y2016</directory>
-    </testsuite>
-    <testsuite name="2021">
-      <directory suffix="Test.php">tests/Y2021</directory>
+    <testsuite name="default">
+      <directory suffix="Test.php">tests</directory>
     </testsuite>
   </testsuites>
   <source>

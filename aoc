@@ -7,5 +7,5 @@ use Symfony\Component\Console\Application;
 require 'vendor/autoload.php';
 
 $application = new Application('Advent of Code');
-$application->add(new Command\Solve());
+$application->addCommand(new Command\Solve());
 $application->run();

@@ -1,27 +1,12 @@
-name: CI
 on: push
 jobs:
   ci:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: ['ubuntu-latest']
-        php-versions: ['8.3']
-    name: Run CI build
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@v6
+      - uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
-          tools: php-cs-fixer
-
-      - name: Install dependencies
-        run: composer install
-
-      - name: Check coding standard
-        run: php-cs-fixer fix --dry-run --diff
-
-      - name: Run unit tests
-        run: vendor/bin/phpunit
+          php-version: 8.4
+      - run: composer install
+      - run: vendor/bin/php-cs-fixer check --diff
+      - run: vendor/bin/phpunit

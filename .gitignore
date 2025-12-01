@@ -1,5 +1,5 @@
 /build
 /vendor
 /.vscode
-/.phpunit.cache
 /.php-cs-fixer.cache
+/.phpunit.result.cache

@@ -1,13 +1,12 @@
 <?php declare(strict_types=1);
 namespace AoC\Y2017;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 use function AoC\getInputFile as getInputFile;
 
-/**
- * @coversDefaultClass AoC\Y2017\Dec02
- */
+#[CoversClass(Dec02::class)]
 class Dec02Test extends TestCase
 {
     private Dec02 $solver;
@@ -17,9 +16,6 @@ class Dec02Test extends TestCase
         $this->solver = new Dec02();
     }
 
-    /**
-     * @covers ::solvePart1
-     */
     public function testSolvePart1(): void
     {
         $testInput = <<<TESTINPUT
@@ -32,9 +28,6 @@ class Dec02Test extends TestCase
         $this->assertSame(48357, $this->solver->solvePart1(getInputFile(2, 2017)));
     }
 
-    /**
-     * @covers ::solvePart2
-     */
     public function testSolvePart2(): void
     {
         $testInput = <<<TESTINPUT

@@ -56,7 +56,7 @@ class Dec10 implements Solver
         return $bots;
     }
 
-    private function runInstructions(array $bots, callable $halt = null): int
+    private function runInstructions(array $bots, ?callable $halt = null): int
     {
         $outputs = [];
 
