@@ -6,7 +6,6 @@ use InvalidArgumentException;
 /**
  * Convert a multiline string to an array of ints
  *
- * @param string $input
  * @return array<int>
  */
 function stringToInts(string $input): array
@@ -17,7 +16,6 @@ function stringToInts(string $input): array
 /**
  * Convert a multiline string to an array of strings
  *
- * @param string $input
  * @return array<string>
  */
 function stringToStrings(string $input): array
@@ -28,10 +26,7 @@ function stringToStrings(string $input): array
 /**
  * Get the trimmed input for a specific day
  *
- * @param int $day
- * @param int $year
  * @throws InvalidArgumentException
- * @return string
  */
 function getInputFile(int $day, int $year): string
 {
@@ -46,9 +41,6 @@ function getInputFile(int $day, int $year): string
 
 /**
  * Check if a number is even
- *
- * @param int $int
- * @return bool
  */
 function isEven(int $int): bool
 {
@@ -59,7 +51,6 @@ function isEven(int $int): bool
  * Get the median from a list of numbers
  *
  * @param array<float> $values
- * @return int
  */
 function median(array $values, bool $isSorted = true): float
 {
@@ -79,9 +70,6 @@ function median(array $values, bool $isSorted = true): float
 
 /**
  * Calculate the nth triangular number
- *
- * @param int $n
- * @return int
  */
 function triangular(int $n): int
 {
@@ -90,9 +78,6 @@ function triangular(int $n): int
 
 /**
  * Get the last number in the series adding up to the triangular number
- *
- * @param int $triangular
- * @return int
  */
 function reverseTriangular(int $triangular): int
 {
@@ -101,10 +86,6 @@ function reverseTriangular(int $triangular): int
 
 /**
  * Calculate the diff between two numbers
- *
- * @param int $a
- * @param int $b
- * @return int
  */
 function diff(int $a, int $b): int
 {
@@ -115,7 +96,6 @@ function diff(int $a, int $b): int
  * Get the average of a list of numbers
  *
  * @param array<float> $values
- * @return float
  */
 function avg(array $values): float
 {
@@ -124,10 +104,6 @@ function avg(array $values): float
 
 /**
  * Sort letters in a string
- *
- * @param string $string
- * @param bool $reverse
- * @return string
  */
 function sortString(string $string, bool $reverse = false): string
 {
@@ -144,12 +120,30 @@ function sortString(string $string, bool $reverse = false): string
 
 /**
  * Check if value $x is between $min and $max
- *
- *
  */
 function isBetween(int $x, int $min, int $max, bool $inclusive = true): bool
 {
     return $inclusive
     ? $x >= $min && $x <= $max
     : $x > $min && $x < $max;
+}
+
+/**
+ * Returns a true mathematical modulus, matching Python's % operator.
+ */
+function mod(int $a, int $b): int
+{
+    return ($a % $b + $b) % $b;
+}
+
+/**
+ * Get the quotient and remainder, matching Python's divmod function.
+ *
+ * @return array{0: int, 1: int}
+ */
+function divmod(int $a, int $b): array
+{
+    $r = mod($a, $b);
+    $q = ($a - $r) / $b;
+    return [$q, $r];
 }

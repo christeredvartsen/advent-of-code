@@ -90,4 +90,21 @@ class FunctionsTest extends TestCase
     {
         $this->assertSame($result, isBetween($x, $min, $max, $inclusive));
     }
+
+    #[TestWith([134, 100, 34])]
+    #[TestWith([34, 100, 34])]
+    #[TestWith([123132134, 100, 34])]
+    #[TestWith([-34, 100, 66])]
+    public function testMod(int $a, int $b, int $result): void
+    {
+        $this->assertSame($result, mod($a, $b));
+    }
+
+
+    #[TestWith([13, 5, [2, 3]])]
+    #[TestWith([-63, 100, [-1, 37]])]
+    public function testDivmod(int $a, int $b, array $result): void
+    {
+        $this->assertSame($result, divmod($a, $b));
+    }
 }
