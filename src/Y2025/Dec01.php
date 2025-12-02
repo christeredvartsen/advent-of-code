@@ -18,6 +18,7 @@ class Dec01 implements Solver
             stringToStrings($input),
         );
     }
+
     public function solvePart1(string $input)
     {
         $password = 0;
