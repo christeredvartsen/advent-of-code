@@ -139,7 +139,7 @@ function mod(int $a, int $b): int
 /**
  * Get the quotient and remainder, matching Python's divmod function.
  *
- * @return array{0: int, 1: int}
+ * @return array{0:int,1:int}
  */
 function divmod(int $a, int $b): array
 {
