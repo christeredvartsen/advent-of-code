@@ -37,7 +37,7 @@
   "scripts": {
     "test": "vendor/bin/phpunit",
     "test:coverage": "vendor/bin/phpunit --coverage-html build/coverage",
-    "cs": "vendor/bin/php-cs-fixer check --diff",
+    "cs": "vendor/bin/php-cs-fixer check --diff --using-cache=no",
     "ci": [
       "@test",
       "@cs"
