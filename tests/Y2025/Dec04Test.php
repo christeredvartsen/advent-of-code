@@ -1,0 +1,57 @@
+<?php declare(strict_types=1);
+namespace AoC\Y2025;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
+
+use function AoC\getInputFile as getInputFile;
+
+#[CoversClass(Dec04::class)]
+class Dec04Test extends TestCase
+{
+    private string $testInput = <<<TESTINPUT
+    ..@@.@@@@.
+    @@@.@.@.@@
+    @@@@@.@.@@
+    @.@@@@..@.
+    @@.@@@@.@@
+    .@@@@@@@.@
+    .@.@.@.@@@
+    @.@@@.@@@@
+    .@@@@@@@@.
+    @.@.@@@.@.
+    TESTINPUT;
+
+    private Dec04 $solver;
+
+    protected function setUp(): void
+    {
+        $this->solver = new Dec04();
+    }
+
+    public function testSolvePart1(): void
+    {
+        $this->assertSame(
+            13,
+            $this->solver->solvePart1($this->testInput),
+        );
+
+        $this->assertSame(
+            1451,
+            $this->solver->solvePart1(getInputFile(4, 2025)),
+        );
+    }
+
+    public function testSolvePart2(): void
+    {
+        $this->assertSame(
+            43,
+            $this->solver->solvePart2($this->testInput),
+        );
+
+        $this->assertSame(
+            8701,
+            $this->solver->solvePart2(getInputFile(4, 2025)),
+        );
+    }
+}
