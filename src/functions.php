@@ -36,7 +36,7 @@ function getInputFile(int $day, int $year): string
         throw new InvalidArgumentException(sprintf('Input %s does not exist', $input));
     }
 
-    return trim(file_get_contents($input));
+    return trim(file_get_contents($input), PHP_EOL);
 }
 
 /**
