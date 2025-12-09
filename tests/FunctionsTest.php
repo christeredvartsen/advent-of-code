@@ -100,11 +100,19 @@ class FunctionsTest extends TestCase
         $this->assertSame($result, mod($a, $b));
     }
 
-
     #[TestWith([13, 5, [2, 3]])]
     #[TestWith([-63, 100, [-1, 37]])]
     public function testDivmod(int $a, int $b, array $result): void
     {
         $this->assertSame($result, divmod($a, $b));
+    }
+
+    #[TestWith([[0, 0, 0], [0, 0, 0], 0])]
+    #[TestWith([[1,2,3], [4,2,3], 3])]
+    #[TestWith([[1,2,3], [1,7,3], 5])]
+    #[TestWith([[1,2,3], [1,2,9], 6])]
+    public function testDistance(array $a, array $b, float $distance): void
+    {
+        $this->assertEquals($distance, distance($a, $b));
     }
 }

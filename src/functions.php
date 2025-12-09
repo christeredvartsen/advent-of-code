@@ -147,3 +147,19 @@ function divmod(int $a, int $b): array
     $q = ($a - $r) / $b;
     return [$q, $r];
 }
+
+/**
+ * Calculate the Euclidean distance between two 3D points
+ *
+ * @param array{0:int,1:int,2:int} $a
+ * @param array{0:int,1:int,2:int} $b
+ * @return float
+ */
+function distance(array $a, array $b): float
+{
+    return sqrt(
+        ($a[0] - $b[0]) ** 2 +
+        ($a[1] - $b[1]) ** 2 +
+        ($a[2] - $b[2]) ** 2,
+    );
+}
